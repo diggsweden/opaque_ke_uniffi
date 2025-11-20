@@ -1,0 +1,8 @@
+target/
+build/
+android/.gradle/
+android/build/
+android/src/main/jniLibs/
+android/src/main/java/se/
+.idea/
+OpaqueKeUniffi/

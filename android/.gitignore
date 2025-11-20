@@ -1,0 +1,18 @@
+# Gradle build artifacts
+.gradle/
+build/
+local.properties
+captures/
+
+# Android Studio / IntelliJ IDEA
+.idea/
+*.iml
+
+# NDK build output
+.cxx/
+.externalNativeBuild/
+
+# AAR output
+*.aar
+/src/main/jniLibs/
+/src/main/java/se/

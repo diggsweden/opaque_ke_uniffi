@@ -1,0 +1,27 @@
+[package]
+name = "opaque_ke_uniffi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+opaque-ke = "4.0.1"
+rand = "0.8"
+voprf = "0.5.0"
+p256 = { version = "0.13", features = ["hash2curve", "voprf"] }
+
+uniffi = { version = "0.30.0", features = ["build", "cli"] }
+sha2 = "0.10.9"
+thiserror = "2.0.17"
+
+[build-dependencies]
+uniffi = { version = "0.30.0", features = ["build"] }
+
+[dev-dependencies]
+hex = "0.4"
+
+[lib]
+name = "opaque_ke_uniffi"
+crate-type = ["cdylib", "staticlib", "lib"]
+
+[package.metadata.uniffi.swift]
+module_name = "opaque_ke_uniffi"

@@ -1,0 +1,8 @@
+/target
+/.tool-versions
+/bindings/
+/jniLibs/
+/generated/
+/.idea/
+/build/
+OpaqueKeUniffi/
