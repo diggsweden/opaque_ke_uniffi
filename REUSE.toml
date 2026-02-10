@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2025 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+version = 1
+
+# Project configuration and metadata files
+[[annotations]]
+path = [
+    "REUSE.toml",
+    "Cargo.toml",
+    "Cargo.lock",
+    "README.md",
+    "LICENSE",
+    ".gitignore",
+    ".dockerignore",
+    ".mise.toml",
+    "uniffi.toml",
+    "android/src/main/AndroidManifest.xml",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025 Digg - Agency for Digital Government"
+SPDX-License-Identifier = "CC0-1.0"
+
+# Gradle wrapper (third-party, Apache-2.0)
+[[annotations]]
+path = [
+    "android/gradlew",
+    "android/gradlew.bat",
+    "android/.gitignore",
+    "android/gradle/wrapper/gradle-wrapper.jar",
+    "android/gradle/wrapper/gradle-wrapper.properties",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2015-2024 the original authors"
+SPDX-License-Identifier = "Apache-2.0"

@@ -1,7 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: EUPL-1.2
+
 # =============================================================================
 # Stage 1: Install tooling
 # =============================================================================
 FROM rust:1.86-bookworm AS base
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Android SDK/NDK configuration
 ENV ANDROID_SDK_ROOT=/opt/android-sdk
@@ -11,9 +17,9 @@ ENV ANDROID_NDK_HOME=${ANDROID_SDK_ROOT}/ndk/${ANDROID_NDK_VERSION}
 
 # Install JDK 17 + basic tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        openjdk-17-jdk-headless \
-        unzip \
-        wget \
+        openjdk-17-jdk-headless=17* \
+        unzip=6* \
+        wget=1* \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Android command-line tools
@@ -70,16 +76,15 @@ RUN cargo ndk \
     -t i686-linux-android \
     -o android/src/main/jniLibs \
     --platform 31 \
-    build --release
-
-# 2. Generate Kotlin bindings
-RUN cargo run --bin uniffi-bindgen --release -- generate \
-    --library android/src/main/jniLibs/x86_64/libopaque_ke_uniffi.so \
-    --language kotlin \
-    --out-dir android/src/main/java
+    build --release \
+ && cargo run --bin uniffi-bindgen --release -- generate \
+        --library android/src/main/jniLibs/x86_64/libopaque_ke_uniffi.so \
+        --language kotlin \
+        --out-dir android/src/main/java
 
 # 3. Build AAR with Gradle
-RUN cd android && ./gradlew --no-daemon --quiet assembleRelease
+WORKDIR /workspace/android
+RUN ./gradlew --no-daemon --quiet assembleRelease
 
 # =============================================================================
 # Stage 4: Export just the artifact

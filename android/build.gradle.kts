@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+//
+// SPDX-License-Identifier: EUPL-1.2
+
 plugins {
     id("com.android.library") version "8.2.0"
     id("org.jetbrains.kotlin.android") version "1.9.22"
