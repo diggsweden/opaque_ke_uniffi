@@ -27,16 +27,17 @@ generated foreign-language bindings.
 | `server_login_start`           | Process a client credential request                            |
 | `server_login_finish`          | Verify the client's credential finalization and derive session key |
 
-
 ## Building
 
 ### Android (`.aar`)
 
 #### Using Docker (recommended)
+
 `docker build --output build . `  
 Produces a `.aar` in the `build/` directory - no local dependencies required.
 
 #### Using Make
+
 `make aar`  
 Requires the Android SDK/NDK, `cargo-ndk`, and the Gradle wrapper in `android/`  
 Individual targets are also available. List with:  
@@ -47,3 +48,17 @@ Individual targets are also available. List with:
 Use make to build a .xcframework file:  
 `make swift-setup`  
 `make swift`
+
+## License
+
+This project is licensed under the [European Union Public License 1.2](LICENSE) (EUPL-1.2).
+
+## Third-Party Notices
+
+This project incorporates the following third-party components:
+
+- [opaque-ke](https://github.com/facebook/opaque-ke) (Apache-2.0 OR MIT)
+- [uniffi-rs](https://github.com/mozilla/uniffi-rs) (MPL-2.0)
+- [voprf](https://github.com/cfrg/voprf-rs) (Apache-2.0 OR MIT)
+- [p256](https://github.com/RustCrypto/elliptic-curves) (Apache-2.0 OR MIT)
+- [rand](https://github.com/rust-random/rand) (Apache-2.0 OR MIT)
