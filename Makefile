@@ -80,8 +80,8 @@ aar: clean android
 	@echo "✅ Done! AAR created at $(FINAL_AAR_FILE)"
 
 swift-setup:
-    # Version 0.10.0 uses uniffi 0.30.0, which is what we use in this project
-	cargo install cargo-swift -f --git https://github.com/antoniusnaumann/cargo-swift --tag v0.10.0
+    # cargo-swift 0.11.0 pins uniffi_bindgen =0.31.0; Cargo.toml must match exactly
+	cargo install cargo-swift -f --git https://github.com/antoniusnaumann/cargo-swift --tag v0.11.0
 
 swift:
-	cargo swift package -y --xcframework-name OpaqueKeUniffi
+	cargo swift package -y
